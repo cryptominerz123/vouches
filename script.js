@@ -9,8 +9,10 @@ function toggleVouchForm() {
 }
 
 function addVouch() {
-    const text = document.getElementById('vouch-text').value;
-    if (text.trim() === '') return;
+    let text = document.getElementById('vouch-text').value.trim();
+    if (text === '') return;
+
+    text = formatVouchText(text);
 
     const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
     vouches.push(text);
@@ -40,6 +42,13 @@ function loadVouches() {
     if (isAdmin()) {
         loadAdminVouches();
     }
+}
+
+function formatVouchText(text) {
+    // Remove any leading "+rep", "+vouch", or "vouch"
+    text = text.replace(/^\+?(rep|vouch)\s*/i, '');
+    // Prepend "+rep"
+    return `+rep ${text}`;
 }
 
 function isAdmin() {
@@ -86,8 +95,9 @@ function loadAdminVouches() {
 
 function editVouch(index) {
     const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
-    const newVouchText = prompt("Edit your vouch:", vouches[index]);
+    let newVouchText = prompt("Edit your vouch:", vouches[index]);
     if (newVouchText !== null) {
+        newVouchText = formatVouchText(newVouchText.trim());
         vouches[index] = newVouchText;
         localStorage.setItem('vouches', JSON.stringify(vouches));
         loadAdminVouches();
@@ -110,8 +120,10 @@ function deleteAllVouches() {
 }
 
 function adminAddVouch() {
-    const text = document.getElementById('new-vouch-text').value;
-    if (text.trim() === '') return;
+    let text = document.getElementById('new-vouch-text').value.trim();
+    if (text === '') return;
+
+    text = formatVouchText(text);
 
     const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
     vouches.push(text);
