@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Vouch Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Vouch Website</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="vouches.html">Vouches</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="admin">
+            <h2>Admin Panel</h2>
+            <div id="admin-login">
+                <input type="password" id="admin-password" placeholder="Enter admin password">
+                <button onclick="adminLogin()">Login</button>
+            </div>
+            <div id="admin-panel" class="hidden">
+                <button onclick="logout()">Logout</button>
+                <h3>Manage Vouches</h3>
+                <div id="admin-vouch-list">
+                    <!-- Admin vouch management here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
