@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vouches - Vouch Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Vouch Website</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="vouches.html">Vouches</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="vouches">
+            <h2>Vouches</h2>
+            <button class="rounded-button" onclick="toggleVouchForm()">+ Write A New Vouch!</button>
+            <div id="vouch-form" class="hidden">
+                <textarea id="vouch-text" placeholder="Write your vouch here..."></textarea>
+                <button onclick="addVouch()">Submit Vouch</button>
+            </div>
+            <div id="vouch-list">
+                <!-- Vouches will appear here -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
