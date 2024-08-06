@@ -27,9 +27,25 @@
             </div>
             <div id="admin-panel" class="hidden">
                 <button onclick="logout()">Logout</button>
-                <h3>Manage Vouches</h3>
-                <div id="admin-vouch-list">
-                    <!-- Admin vouch management here -->
+                <div class="admin-section">
+                    <h3>Manage Vouches</h3>
+                    <button onclick="toggleVouchForm()">Add New Vouch</button>
+                    <div id="vouch-form" class="hidden">
+                        <textarea id="new-vouch-text" placeholder="Write a new vouch..."></textarea>
+                        <button onclick="adminAddVouch()">Add Vouch</button>
+                    </div>
+                    <div id="admin-vouch-list">
+                        <!-- Admin vouch management here -->
+                    </div>
+                </div>
+                <div class="admin-section">
+                    <h3>Site Settings</h3>
+                    <button onclick="toggleSiteSettings()">Toggle Settings</button>
+                    <div id="site-settings" class="hidden">
+                        <label for="site-title">Site Title:</label>
+                        <input type="text" id="site-title" placeholder="Enter new site title">
+                        <button onclick="updateSiteTitle()">Update Title</button>
+                    </div>
                 </div>
             </div>
         </section>
