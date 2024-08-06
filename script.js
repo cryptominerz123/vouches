@@ -27,9 +27,7 @@ function loadVouches() {
     vouches.forEach((vouch, index) => {
         const div = document.createElement('div');
         div.className = 'vouch';
-        div.innerHTML = `
-            <p>${vouch}</p>
-        `;
+        div.innerHTML = `<p>${vouch}</p>`;
         vouchList.appendChild(div);
 
         // Adding animation
@@ -78,17 +76,15 @@ function loadAdminVouches() {
     vouches.forEach((vouch, index) => {
         const div = document.createElement('div');
         div.className = 'vouch';
-        div.innerHTML = `
-            <p>${vouch}</p>
+        div.innerHTML = `<p>${vouch}</p>
             <button onclick="editVouch(${index})">Edit</button>
-            <button onclick="deleteVouch(${index})">Delete</button>
-        `;
+            <button onclick="deleteVouch(${index})">Delete</button>`;
         adminVouchList.appendChild(div);
     });
 }
 
 function editVouch(index) {
-    const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
+    const vouches = JSON.parse(localStorage.getItem('vouches'));
     const newVouchText = prompt("Edit your vouch:", vouches[index]);
     if (newVouchText !== null) {
         vouches[index] = newVouchText;
@@ -99,9 +95,15 @@ function editVouch(index) {
 }
 
 function deleteVouch(index) {
-    const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
+    const vouches = JSON.parse(localStorage.getItem('vouches'));
     vouches.splice(index, 1);
     localStorage.setItem('vouches', JSON.stringify(vouches));
+    loadAdminVouches();
+    loadVouches();
+}
+
+function deleteAllVouches() {
+    localStorage.setItem('vouches', JSON.stringify([]));
     loadAdminVouches();
     loadVouches();
 }
@@ -127,6 +129,6 @@ function updateSiteTitle() {
     const newTitle = document.getElementById('site-title').value;
     if (newTitle.trim() !== '') {
         document.querySelector('header h1').innerText = newTitle;
-        alert('Site title updated!'); // Placeholder for actual site settings persistence
+        alert('Site title updated!');
     }
 }
