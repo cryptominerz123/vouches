@@ -46,7 +46,7 @@ function loadVouches() {
 
 function formatVouchText(text) {
     // Remove any leading "+rep", "+vouch", or "vouch"
-    text = text.replace(/^\+?(rep|vouch)\s*/i, '');
+    text = text.replace(/^(\+rep\s*|\+?vouch\s*)/i, '');
     // Prepend "+rep"
     return `+rep ${text}`;
 }
