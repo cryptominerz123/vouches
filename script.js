@@ -1,7 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadVouches();
-    checkAdminStatus();
+    checkAdminStatus();  // Ensure this is called if it's used for admin checks.
 });
+
+function toggleVouchForm() {
+    const form = document.getElementById('vouch-form');
+    form.classList.toggle('hidden');
+}
+
+function addVouch() {
+    const vouchText = document.getElementById('vouch-text').value;
+    if (!vouchText.trim()) {
+        alert("Please enter a vouch to submit.");
+        return;
+    }
+
+    const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
+    vouches.push(vouchText);
+    localStorage.setItem('vouches', JSON.stringify(vouches));
+    document.getElementById('vouch-text').value = ''; // Clear the textarea after submitting
+    loadVouches(); // Reload the list of vouches
+    toggleVouchForm(); // Optionally close the form
+}
+
+function loadVouches() {
+    const vouchList = document.getElementById('vouch-list');
+    if (!vouchList) return;  // Check if vouchList exists, useful if this script is used across different pages
+    const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
+    vouchList.innerHTML = vouches.map(vouch => `<div class="vouch">${vouch}</div>`).join('');
+}
 
 function adminLogin() {
     const password = document.getElementById('admin-password').value;
@@ -18,51 +45,13 @@ function logout() {
     window.location.reload();
 }
 
-function loadVouches() {
-    const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
-    const vouchList = document.getElementById('vouch-list');
-    vouchList.innerHTML = vouches.map((vouch, index) => `
-        <div class="vouch">
-            <p>${vouch}</p>
-            <button onclick="editVouch(${index})">Edit</button>
-            <button onclick="deleteVouch(${index})">Delete</button>
-        </div>
-    `).join('');
-}
-
-function editVouch(index) {
-    const vouches = JSON.parse(localStorage.getItem('vouches'));
-    const newVouch = prompt("Edit your vouch:", vouches[index]);
-    if (newVouch !== null) {
-        vouches[index] = newVouch;
-        localStorage.setItem('vouches', JSON.stringify(vouches));
-        loadVouches();
-    }
-}
-
-function deleteVouch(index) {
-    const vouches = JSON.parse(localStorage.getItem('vouches'));
-    vouches.splice(index, 1);
-    localStorage.setItem('vouches', JSON.stringify(vouches));
-    loadVouches();
-}
-
 function checkAdminStatus() {
-    const admin = sessionStorage.getItem('admin') === 'true';
-    document.getElementById('admin-login').classList.toggle('hidden', admin);
-    document.getElementById('admin-panel').classList.toggle('hidden', !admin);
-    if (admin) loadVouches();
-}
-
-function toggleSiteSettings() {
-    const settings = document.getElementById('site-settings');
-    settings.classList.toggle('hidden');
-}
-
-function updateSiteTitle() {
-    const newTitle = document.getElementById('site-title').value;
-    if (newTitle.trim() !== '') {
-        document.querySelector('header h1').innerText = newTitle;
-        alert('Site title updated!');
+    const isAdmin = sessionStorage.getItem('admin') === 'true';
+    const adminPanel = document.getElementById('admin-panel');
+    const adminLogin = document.getElementById('admin-login');
+    if (adminPanel && adminLogin) {
+        adminLogin.classList.toggle('hidden', isAdmin);
+        adminPanel.classList.toggle('hidden', !isAdmin);
     }
+    if (isAdmin) loadVouches();
 }
