@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Example Vouches - Admin Panel</h1>
+        <h1>example vouches</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -20,21 +20,21 @@
 
     <main>
         <section id="admin">
-            <h2>Manage Vouches</h2>
-            <div id="admin-login" class="hidden">
+            <div id="admin-login">
                 <input type="password" id="admin-password" placeholder="Enter admin password">
                 <button onclick="adminLogin()">Login</button>
             </div>
             <div id="admin-panel" class="hidden">
                 <button onclick="logout()">Logout</button>
                 <div class="admin-section">
+                    <h3>Manage Vouches</h3>
                     <button onclick="toggleVouchForm()">Add New Vouch</button>
                     <div id="vouch-form" class="hidden">
                         <textarea id="new-vouch-text" placeholder="Write a new vouch..."></textarea>
-                        <button onclick="adminAddVouch()">Add Vouch</button>
+                        <button onclick="adminAddVouch()">Submit Vouch</button>
                     </div>
                     <div id="admin-vouch-list">
-                        <!-- Admin vouch management will be rendered here -->
+                        <!-- Vouch management will be rendered here -->
                     </div>
                 </div>
                 <div class="admin-section">
