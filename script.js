@@ -32,7 +32,7 @@ function loadVouches() {
 
 function adminLogin() {
     const password = document.getElementById('admin-password').value;
-    if (password === 'adminpassword') {
+    if (password === 'admin') {
         sessionStorage.setItem('admin', 'true');
         checkAdminStatus();
     } else {
