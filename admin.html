@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Example Vouches</title>
+    <title>Admin Panel - Vouch Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>example vouches</h1>
+        <h1>Vouch Website - Admin Panel</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -20,7 +20,7 @@
 
     <main>
         <section id="admin">
-            <div id="admin-login">
+            <div id="admin-login" class="hidden">
                 <input type="password" id="admin-password" placeholder="Enter admin password">
                 <button onclick="adminLogin()">Login</button>
             </div>
@@ -28,14 +28,10 @@
                 <button onclick="logout()">Logout</button>
                 <div class="admin-section">
                     <h3>Manage Vouches</h3>
-                    <button onclick="toggleVouchForm()">Add New Vouch</button>
-                    <div id="vouch-form" class="hidden">
-                        <textarea id="new-vouch-text" placeholder="Write a new vouch..."></textarea>
-                        <button onclick="adminAddVouch()">Submit Vouch</button>
-                    </div>
                     <div id="admin-vouch-list">
                         <!-- Vouch management will be rendered here -->
                     </div>
+                    <button onclick="deleteAllVouches()">Delete All Vouches</button>
                 </div>
                 <div class="admin-section">
                     <h3>Site Settings</h3>
