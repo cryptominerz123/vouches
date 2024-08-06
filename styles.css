@@ -1,40 +1,166 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Vouch Website</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Vouch Website</h1>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="vouches.html">Vouches</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
 
-    <main>
-        <section id="admin">
-            <h2>Admin Panel</h2>
-            <div id="admin-login">
-                <input type="password" id="admin-password" placeholder="Enter admin password">
-                <button onclick="adminLogin()">Login</button>
-            </div>
-            <div id="admin-panel" class="hidden">
-                <button onclick="logout()">Logout</button>
-                <h3>Manage Vouches</h3>
-                <div id="admin-vouch-list">
-                    <!-- Admin vouch management here -->
-                </div>
-            </div>
-        </section>
-    </main>
+header {
+    background-color: #4a90e2;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h2 {
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 0.5rem;
+}
+
+button.rounded-button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button.rounded-button:hover {
+    background-color: #357abd;
+}
+
+.hidden {
+    display: none;
+}
+
+#vouch-list, #admin-vouch-list {
+    margin-top: 1rem;
+}
+
+.vouch {
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.vouch.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#admin-login input[type="password"] {
+    width: calc(100% - 80px);
+    padding: 0.5rem;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#admin-login button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+}
+
+#admin-login button:hover {
+    background-color: #357abd;
+}
+
+.admin-section {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-section h3 {
+    margin-top: 0;
+}
+
+.admin-section button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.admin-section button:hover {
+    background-color: #c0392b;
+}
+
+#site-settings input[type="text"] {
+    width: calc(100% - 80px);
+    padding: 0.5rem;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#site-settings button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+}
+
+#site-settings button:hover {
+    background-color: #357abd;
+}
