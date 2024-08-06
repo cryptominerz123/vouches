@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadVouches();
-    checkAdminStatus();  // Ensure this is called if it's used for admin checks.
+    checkAdminStatus();
 });
 
 function toggleVouchForm() {
@@ -20,12 +20,11 @@ function addVouch() {
     localStorage.setItem('vouches', JSON.stringify(vouches));
     document.getElementById('vouch-text').value = ''; // Clear the textarea after submitting
     loadVouches(); // Reload the list of vouches
-    toggleVouchForm(); // Optionally close the form
+    toggleVouchForm(); // Optionally close the form if needed
 }
 
 function loadVouches() {
     const vouchList = document.getElementById('vouch-list');
-    if (!vouchList) return;  // Check if vouchList exists, useful if this script is used across different pages
     const vouches = JSON.parse(localStorage.getItem('vouches')) || [];
     vouchList.innerHTML = vouches.map(vouch => `<div class="vouch">${vouch}</div>`).join('');
 }
