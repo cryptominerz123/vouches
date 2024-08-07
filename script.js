@@ -57,7 +57,7 @@ function checkAdminStatus() {
 
 function adminLogin() {
     const password = document.getElementById('admin-password').value;
-    if (password === 'adminpassword') { // Replace with a more secure method
+    if (password === 'admin') { // Replace with a more secure method
         sessionStorage.setItem('admin', 'true');
         checkAdminStatus();
     } else {
